@@ -1,13 +1,16 @@
-import * as fs from "node:Promise"
+import * as fs from "node:fs/promises"
 
-console.log(fs.readfile("file-1.txt" , {encoding: "utf-8"} ))
-    .then((file2Data)=>{console.log(file2Data, "fileDta")})
-    .then(()=>{fs.readfile("file-2.txt" , {encoding: "utf-8"})})
-    .then((file3Data)=>{console.log(file3Data, "fileDta")})
-    .then(()=>{fs.readfile("file-3.txt" , {encoding: "utf-8"})})
-    .catch((error)=>{console.error(error)})
+async function outputfilesTogthwer(){
+    try{
+        const data = Promise.all([
+            fs.readFile("file-1.txt" , {encoding: "utf-8"}),
+            fs.readFile("file-2.txt" , {encoding: "utf-8"}),
+            fs.readFile("file-3.txt" , {encoding: "utf-8"})
+        ])
+    }
+    catch{
+        console.error(error)
+    }
+}
 
-    
-
-
-  
+outputfilesTogthwer();
